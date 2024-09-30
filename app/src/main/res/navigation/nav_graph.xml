@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/setupFragment">
+
+    <action android:id="@+id/actionGlobalTrackingFragment"
+        app:destination="@+id/trackingFragment"
+        app:launchSingleTop="true"/>
+
+    <fragment
+        android:id="@+id/biCycleFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.BiCycleFragment"
+        android:label="BiCycleFragment" >
+        <action
+            android:id="@+id/action_biCycleFragment_to_trackingFragment"
+            app:destination="@id/trackingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.StatisticsFragment"
+        android:label="StatisticsFragment" />
+    <fragment
+        android:id="@+id/trackingFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.TrackingFragment"
+        android:label="TrackingFragment" >
+        <action
+            android:id="@+id/action_trackingFragment_to_biCycleFragment"
+            app:destination="@id/biCycleFragment" />
+        <action
+            android:id="@+id/action_trackingFragment_to_saveRideFragment"
+            app:destination="@id/saveRideFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.SetupFragment"
+        android:label="SetupFragment" >
+        <action
+            android:id="@+id/action_setupFragment_to_biCycleFragment"
+            app:destination="@id/biCycleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveRideFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.SaveRideFragment"
+        android:label="fragment_save_ride"
+        tools:layout="@layout/fragment_save_ride" >
+        <action
+            android:id="@+id/action_saveRideFragment_to_biCycleFragment"
+            app:destination="@id/biCycleFragment" />
+        <argument
+            android:name="bicycle"
+            app:argType="com.dynamicdriller.velox.db.BiCycle" />
+    </fragment>
+</navigation>
