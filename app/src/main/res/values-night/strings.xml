@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_preview">Map Preview</string>
+    <string name="duration">Duration</string>
+    <string name="distance">Distance</string>
+    <string name="graph_preview">Graph Preview</string>
+</resources>

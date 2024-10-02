@@ -3,8 +3,7 @@ package com.dynamicdriller.velox.ui.viewmodels
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
-import com.dynamicdriller.velox.db.BiCycle
+import com.dynamicdriller.velox.db.Activity
 import com.dynamicdriller.velox.other.SortType
 import com.dynamicdriller.velox.repositories.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,51 +22,51 @@ class MainViewModel @Inject constructor(
     private val runSortedByAvgSpeedInKmh = mainRepository.getAllBicycleActivitySortedByAvgSpeedInKmh()
 
 
-    val runs = MediatorLiveData<List<BiCycle>>()
+    val activities = MediatorLiveData<List<Activity>>()
 
     var sortType = SortType.DATE
 
     init {
-        runs.addSource(runSortedByDate){result->
+        activities.addSource(runSortedByDate){ result->
             if (sortType==SortType.DATE){
-                result?.let { runs.value = it }
+                result?.let { activities.value = it }
             }
         }
-        runs.addSource(runSortedByAvgSpeedInKmh){result->
+        activities.addSource(runSortedByAvgSpeedInKmh){ result->
             if (sortType==SortType.AVG_SPEED){
-                result?.let { runs.value = it }
+                result?.let { activities.value = it }
             }
         }
-        runs.addSource(runSortedByCalories){result->
+        activities.addSource(runSortedByCalories){ result->
             if (sortType==SortType.CALORIES_BURNED){
-                result?.let { runs.value = it }
+                result?.let { activities.value = it }
             }
         }
-        runs.addSource(runSortedByDistance){result->
+        activities.addSource(runSortedByDistance){ result->
             if (sortType==SortType.DISTANCE){
-                result?.let { runs.value = it }
+                result?.let { activities.value = it }
             }
         }
-        runs.addSource(runSortedByTimeInMillis){result->
+        activities.addSource(runSortedByTimeInMillis){ result->
             if (sortType==SortType.RUNNING_TIME){
-                result?.let { runs.value = it }
+                result?.let { activities.value = it }
             }
         }
     }
 
 
     fun sortRuns(sortType: SortType)= when(sortType){
-        SortType.DATE -> runSortedByDate.value?.let { runs.value = it }
-        SortType.RUNNING_TIME -> runSortedByTimeInMillis.value?.let { runs.value = it }
-        SortType.CALORIES_BURNED -> runSortedByCalories.value?.let { runs.value = it }
-        SortType.AVG_SPEED -> runSortedByAvgSpeedInKmh.value?.let { runs.value = it }
-        SortType.DISTANCE -> runSortedByDistance.value?.let { runs.value = it }
+        SortType.DATE -> runSortedByDate.value?.let { activities.value = it }
+        SortType.RUNNING_TIME -> runSortedByTimeInMillis.value?.let { activities.value = it }
+        SortType.CALORIES_BURNED -> runSortedByCalories.value?.let { activities.value = it }
+        SortType.AVG_SPEED -> runSortedByAvgSpeedInKmh.value?.let { activities.value = it }
+        SortType.DISTANCE -> runSortedByDistance.value?.let { activities.value = it }
         else -> {}
     }.also { this.sortType = sortType }
 
 
 
-    fun insertBiCycle(bicycle:BiCycle) = viewModelScope.launch(Dispatchers.IO) {
+    fun insertBiCycle(bicycle:Activity) = viewModelScope.launch(Dispatchers.IO) {
         mainRepository.insertBiCycle(bicycle)
     }
 

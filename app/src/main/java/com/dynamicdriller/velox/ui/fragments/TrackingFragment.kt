@@ -20,7 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.dynamicdriller.velox.R
 import com.dynamicdriller.velox.databinding.FragmentTrackingBinding
 import com.dynamicdriller.velox.databinding.FragmentTrackingBinding.*
-import com.dynamicdriller.velox.db.BiCycle
+import com.dynamicdriller.velox.db.Activity
 import com.dynamicdriller.velox.other.Constants.ACTION_PAUSE_SERVICE
 import com.dynamicdriller.velox.other.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.dynamicdriller.velox.other.Constants.ACTION_STOP_SERVICE
@@ -53,7 +53,7 @@ const val CANCEL_TRACKING_DIALOG_CHECK = "CANCEL_TRACKING_DIALOG_CHECK"
 @AndroidEntryPoint
 class TrackingFragment : Fragment(R.layout.fragment_tracking), OnMapsSdkInitializedCallback {
     private var isPaused = false
-    private var savedBicycle=BiCycle()
+    private var savedBicycle=Activity()
     private lateinit var binding: FragmentTrackingBinding
     private var map: GoogleMap? = null
     private var isTracking = false
@@ -265,7 +265,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking), OnMapsSdkInitiali
                 val avgSpeed = if (distanceInMeters>0) round((distanceInMeters / 1000f) / (currentTimeInMillis / 1000f / 60 / 60) * 10) / 10f else 0f
                 val dateTimeStamp = Calendar.getInstance().timeInMillis
                 val caloriesBurned = ((distanceInMeters/1000f)* weight).toInt()
-                savedBicycle = BiCycle(image = bmp, timestamp = dateTimeStamp, avgSpeedInKm =  avgSpeed, distanceInMeters =  distanceInMeters, timeInMillis =  currentTimeInMillis, caloriesBurn =  caloriesBurned)
+                savedBicycle = Activity(image = bmp, timestamp = dateTimeStamp, avgSpeedInKm =  avgSpeed, distanceInMeters =  distanceInMeters, timeInMillis =  currentTimeInMillis, caloriesBurn =  caloriesBurned)
                 val action = TrackingFragmentDirections.actionTrackingFragmentToSaveRideFragment(savedBicycle)
                 findNavController().navigate(action)
                 stopRun()

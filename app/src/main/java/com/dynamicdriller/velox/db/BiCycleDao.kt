@@ -10,25 +10,25 @@ import androidx.room.Query
 @Dao
 interface BiCycleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBiCycle(biCycle: BiCycle)
+    fun insertBiCycle(activity: Activity)
 
     @Delete
-    fun deleteBiCycle(biCycle: BiCycle)
+    fun deleteBiCycle(activity: Activity)
 
     @Query("SELECT * FROM cycling_table ORDER BY timestamp DESC")
-    fun getAllBicycleActivitySortedByDate() : LiveData<List<BiCycle>>
+    fun getAllBicycleActivitySortedByDate() : LiveData<List<Activity>>
 
     @Query("SELECT * FROM cycling_table ORDER BY timeInMillis DESC")
-    fun getAllBicycleActivitySortedByTimeInMillis() : LiveData<List<BiCycle>>
+    fun getAllBicycleActivitySortedByTimeInMillis() : LiveData<List<Activity>>
 
     @Query("SELECT * FROM cycling_table ORDER BY caloriesBurn DESC")
-    fun getAllBicycleActivitySortedByCalories() : LiveData<List<BiCycle>>
+    fun getAllBicycleActivitySortedByCalories() : LiveData<List<Activity>>
 
     @Query("SELECT * FROM cycling_table ORDER BY avgSpeedInKm DESC")
-    fun getAllBicycleActivitySortedByAvgSpeedInKmh() : LiveData<List<BiCycle>>
+    fun getAllBicycleActivitySortedByAvgSpeedInKmh() : LiveData<List<Activity>>
 
     @Query("SELECT * FROM cycling_table ORDER BY distanceInMeters DESC")
-    fun getAllBicycleActivitySortedByDistance() : LiveData<List<BiCycle>>
+    fun getAllBicycleActivitySortedByDistance() : LiveData<List<Activity>>
 
     @Query("SELECT SUM(timeInMillis) FROM cycling_table")
     fun getTotalTimeInMillis() : LiveData<Long>

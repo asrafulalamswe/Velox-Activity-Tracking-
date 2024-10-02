@@ -1,25 +1,18 @@
 package com.dynamicdriller.velox.ui.fragments
 
 import android.Manifest
-import android.content.DialogInterface
-import android.content.Intent
-import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dynamicdriller.velox.R
-import com.dynamicdriller.velox.adapters.RunAdapter
+import com.dynamicdriller.velox.adapters.BicycleAdapter
 import com.dynamicdriller.velox.databinding.FragmentBicycleBinding
 import com.dynamicdriller.velox.other.Constants.BACKGROUND_LOCATION_PERMISSION_CODE
 import com.dynamicdriller.velox.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
@@ -35,7 +28,7 @@ import timber.log.Timber
 class BiCycleFragment : Fragment(R.layout.fragment_bicycle), EasyPermissions.PermissionCallbacks {
     private lateinit var binding: FragmentBicycleBinding
     private val viewModel:MainViewModel by viewModels()
-    private lateinit var runAdapter: RunAdapter
+    private lateinit var bicycleAdapter: BicycleAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,15 +42,13 @@ class BiCycleFragment : Fragment(R.layout.fragment_bicycle), EasyPermissions.Per
         super.onViewCreated(view, savedInstanceState)
         requestPermissions()
         setUpRecyclerView()
-        // Check if location is enabled
-
-            viewModel.runs.observe(viewLifecycleOwner) { newList ->
-                setUpRecyclerView()
-                runAdapter.submitList(newList)
-            }
-            binding.fab.setOnClickListener {
-                findNavController().navigate(R.id.action_biCycleFragment_to_trackingFragment)
-            }
+        viewModel.activities.observe(viewLifecycleOwner) { newList ->
+            setUpRecyclerView()
+            bicycleAdapter.submitList(newList)
+        }
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_biCycleFragment_to_trackingFragment)
+        }
         when(viewModel.sortType){
             SortType.DATE -> binding.spFilter.setSelection(0)
             SortType.RUNNING_TIME -> binding.spFilter.setSelection(1)
@@ -74,7 +65,7 @@ class BiCycleFragment : Fragment(R.layout.fragment_bicycle), EasyPermissions.Per
                     3-> viewModel.sortRuns(SortType.AVG_SPEED)
                     4-> viewModel.sortRuns(SortType.CALORIES_BURNED)
                 }
-                Timber.d("updated filter: size = ${viewModel.runs.value?.size}")
+                Timber.d("updated filter: size = ${viewModel.activities.value?.size}")
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {}
 
@@ -87,8 +78,8 @@ class BiCycleFragment : Fragment(R.layout.fragment_bicycle), EasyPermissions.Per
     private fun setUpRecyclerView() {
         binding.rvRuns.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            runAdapter = RunAdapter()
-            adapter = runAdapter
+            bicycleAdapter = BicycleAdapter()
+            adapter = bicycleAdapter
         }
     }
 
@@ -97,7 +88,6 @@ class BiCycleFragment : Fragment(R.layout.fragment_bicycle), EasyPermissions.Per
             return
         }
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            Log.d("PERMISSIONCHECK", "requestPermissions: < Q ")
             EasyPermissions.requestPermissions(
                 this,
                 "You need to accept location permissions to use this app.",
@@ -138,7 +128,6 @@ class BiCycleFragment : Fragment(R.layout.fragment_bicycle), EasyPermissions.Per
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        Log.d("PERMISSIONCHECK", "requestPermissions: onRequestPermissionsResult $requestCode ")
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 

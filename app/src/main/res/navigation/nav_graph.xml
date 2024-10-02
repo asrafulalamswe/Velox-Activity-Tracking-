@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_biCycleFragment_to_trackingFragment"
             app:destination="@id/trackingFragment" />
+        <action
+            android:id="@+id/action_biCycleFragment_to_activityDetailsFragment"
+            app:destination="@id/activityDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -54,6 +57,18 @@
             app:destination="@id/biCycleFragment" />
         <argument
             android:name="bicycle"
-            app:argType="com.dynamicdriller.velox.db.BiCycle" />
+            app:argType="com.dynamicdriller.velox.db.Activity" />
+    </fragment>
+    <fragment
+        android:id="@+id/activityDetailsFragment"
+        android:name="com.dynamicdriller.velox.ui.fragments.ActivityDetailsFragment"
+        android:label="fragment_activity_details"
+        tools:layout="@layout/fragment_activity_details" >
+        <action
+            android:id="@+id/action_activityDetailsFragment_to_biCycleFragment"
+            app:destination="@id/biCycleFragment" />
+        <argument
+            android:name="activity"
+            app:argType="com.dynamicdriller.velox.db.Activity" />
     </fragment>
 </navigation>

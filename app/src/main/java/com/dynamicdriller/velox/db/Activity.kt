@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "cycling_table")
-data class BiCycle(
+data class Activity(
     @PrimaryKey(autoGenerate = true)
     var id:Int? = null,
     var title:String = "",

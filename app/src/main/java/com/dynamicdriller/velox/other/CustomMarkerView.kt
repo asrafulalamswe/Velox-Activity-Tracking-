@@ -3,7 +3,7 @@ package com.dynamicdriller.velox.other
 import android.content.Context
 import android.widget.TextView
 import com.dynamicdriller.velox.R
-import com.dynamicdriller.velox.db.BiCycle
+import com.dynamicdriller.velox.db.Activity
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class CustomMarkerView(
-    val runs: List<BiCycle>,
+    val runs: List<Activity>,
     c: Context,
     layoutId: Int
 ) : MarkerView(c, layoutId) {

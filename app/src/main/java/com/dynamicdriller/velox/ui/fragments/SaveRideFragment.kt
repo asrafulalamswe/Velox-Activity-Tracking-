@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dynamicdriller.velox.R
 import com.dynamicdriller.velox.databinding.FragmentSaveRideBinding
-import com.dynamicdriller.velox.db.BiCycle
+import com.dynamicdriller.velox.db.Activity
 import com.dynamicdriller.velox.other.Constants
 import com.dynamicdriller.velox.services.TrackingService
 import com.dynamicdriller.velox.ui.viewmodels.MainViewModel
@@ -55,7 +55,7 @@ class SaveRideFragment : Fragment() {
                     "Night Ride"
                 }
             }
-            val biCycle = BiCycle(
+            val activity = Activity(
                 title = title,
                 image = args.bicycle.image,
                 timestamp = args.bicycle.timestamp,
@@ -64,7 +64,7 @@ class SaveRideFragment : Fragment() {
                 distanceInMeters =  args.bicycle.distanceInMeters,
                 caloriesBurn =  args.bicycle.caloriesBurn
             )
-            viewModel.insertBiCycle(biCycle)
+            viewModel.insertBiCycle(activity)
             stopRun()
             Snackbar.make(requireActivity().findViewById(R.id.rootView), "Ride Saved Successfully", Snackbar.LENGTH_SHORT).show()
         }
