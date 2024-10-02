@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Night Mode Colors -->
+    <color name="colorPrimary">#388E3C</color> <!-- Darker Green for Night -->
+    <color name="colorSecondary">#9E9D24</color> <!-- Muted Yellow-Green -->
+    <color name="colorBackground">#121212</color> <!-- Dark Background -->
+    <color name="colorError">#CF6679</color> <!-- Softer Red for Errors -->
+    <color name="colorPrimaryVariant">#2E7D32</color> <!-- Darker Green for Variant -->
+    <color name="colorSecondaryVariant">#7CB342</color> <!-- Softer Green for Accent -->
+    <color name="colorSurface">#1B5E20</color> <!-- Darker Surface Color -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- White Text on Primary -->
+    <color name="colorOnSecondary">#E0E0E0</color> <!-- Light Text on Secondary -->
+    <color name="colorOnBackground">#E0E0E0</color> <!-- Light Text on Background -->
+    <color name="colorOnError">#000000</color> <!-- Dark Text on Error Background -->
+    <color name="colorOnSurface">#FFFFFF</color> <!-- White Text on Surface -->
+    <color name="scrimBackground">#000000</color> <!-- Scrim Background -->
+</resources>

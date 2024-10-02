@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         navigateToTrackingFragmentINeeded(intent)
         binding.bottomNavigationView.setupWithNavController(navController)
         binding.bottomNavigationView.setOnNavigationItemReselectedListener { /*No Operation*/ }
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         navController.addOnDestinationChangedListener{_,destination,_->
             when(destination.id){
                 R.id.settingsFragment,R.id.biCycleFragment,R.id.statisticsFragment ->

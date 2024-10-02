@@ -37,7 +37,7 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/colorOnSecondary"
             android:ems="10"
             android:imeOptions="actionDone"
             android:hint="Title Your Ride"

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Your Name"
-            android:textColor="@color/black"
+            android:textColor="@color/colorOnSecondary"
             android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:textColor="@color/black"
+            android:textColor="@color/colorOnSecondary"
             android:hint="Your Weight"
             android:inputType="numberDecimal" />
 
@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Apply Changes"
+        android:textColor="@color/colorOnSurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilWeight" />

@@ -1,36 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme for both Light and Night Mode -->
     <style name="Base.Theme.Velox" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Original AppCompat attributes. -->
-        <item name="colorPrimary">#4CAF50</item>
-        <item name="colorSecondary">#CDDC39</item>
-        <item name="android:colorBackground">#FFFFFF</item>
-        <item name="colorError">@color/errorColor</item>
+        <!-- Original AppCompat attributes -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorError">@color/colorError</item>
 
-        <!-- New MaterialComponents attributes. -->
-        <item name="colorPrimaryVariant">@android:color/white</item>
-        <item name="colorSecondaryVariant">#66BB6A</item>
-        <!--> toolbar color -->asraful
-        <item name="colorSurface">#4CAF50</item>
-        <item name="colorOnPrimary">@color/md_blue_50</item>
-        <item name="colorOnSecondary">@color/md_blue_50</item>
-        <item name="colorOnBackground">@color/md_blue_50</item>
-        <item name="colorOnError">@android:color/black</item>
-        <item name="colorOnSurface">@android:color/white</item>
-        <item name="scrimBackground">@color/mtrl_scrim_color</item>
-        <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
-        <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
-        <item name="textAppearanceHeadline3">@style/TextAppearance.MaterialComponents.Headline3</item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.MaterialComponents.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.MaterialComponents.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextAppearance.MaterialComponents.Subtitle2</item>
-        <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.MaterialComponents.Caption</item>
-        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
-        <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
+        <!-- New MaterialComponents attributes -->
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="scrimBackground">@color/scrimBackground</item>
 
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
     </style>

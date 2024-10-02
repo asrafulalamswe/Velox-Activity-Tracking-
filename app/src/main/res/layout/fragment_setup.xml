@@ -33,7 +33,7 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/colorOnSecondary"
             android:ems="10"
             android:hint="Your Name"
             android:inputType="textPersonName" />
@@ -54,7 +54,7 @@
             android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/colorOnSecondary"
             android:hint="Your Weight"
             android:ems="10"
             android:inputType="numberDecimal" />
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Continue"
-            android:textColor="@color/white"
+            android:textColor="@color/colorOnSurface"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
