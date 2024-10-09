@@ -330,18 +330,36 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking), OnMapsSdkInitiali
 
     override fun onResume() {
         super.onResume()
-        binding.mapView.onResume()
-        if (pathPoints.isNotEmpty()){
+        binding.mapView.onStart()
+
+        // Clear old polylines to avoid duplication
+        map?.clear()
+
+        // Add all the polylines back to the map
+        if (pathPoints.isNotEmpty()) {
             addAllPolyLines()
         }
+        // Move the camera to the user's current location
+        moveCameraToUser()
     }
 
     override fun onStart() {
         super.onStart()
         binding.mapView.onStart()
-        if (pathPoints.isNotEmpty()){
+
+        // Clear old polylines to avoid duplication
+        map?.clear()
+
+        // Add all the polylines back to the map
+        if (pathPoints.isNotEmpty()) {
             addAllPolyLines()
         }
+
+        // Move the camera to the user's current location
+        moveCameraToUser()
+
+        // Re-subscribe to the tracking service observers
+        subscribeToObserver()
     }
 
     override fun onStop() {

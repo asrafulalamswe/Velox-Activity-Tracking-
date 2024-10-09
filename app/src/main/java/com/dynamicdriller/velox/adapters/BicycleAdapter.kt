@@ -24,7 +24,6 @@ class BicycleAdapter: RecyclerView.Adapter<BicycleAdapter.RunViewHolder>() {
     inner class RunViewHolder( val binding : ItemRunBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(activity:Activity){
             binding.itemCardView.setOnClickListener {
-                Log.d("adaptertest", "bind: ${activity.title}")
                 val action = BiCycleFragmentDirections.actionBiCycleFragmentToActivityDetailsFragment(activity)
                 it.findNavController().navigate(action)
             }
@@ -57,7 +56,6 @@ class BicycleAdapter: RecyclerView.Adapter<BicycleAdapter.RunViewHolder>() {
     override fun onBindViewHolder(holder: RunViewHolder, position: Int) {
         val activity = differ.currentList[position]
         holder.bind(activity)
-        Log.d("adaptertest", "bind: ${activity.title}")
         holder.itemView.setOnClickListener {
             val action = BiCycleFragmentDirections.actionBiCycleFragmentToActivityDetailsFragment(activity)
             it.findNavController().navigate(action)
